@@ -256,6 +256,7 @@ copy "$(OutDir)$(TargetFileName)" C:\Include\bin\ExLibd.lib</Command>
     <ClInclude Include="cexcrypt.h" />
     <ClInclude Include="CryptProtocol.h" />
     <ClInclude Include="CSqlite.h" />
+    <ClInclude Include="DIBBitmap.h" />
     <ClInclude Include="Expression.h" />
     <ClInclude Include="GdiplusDebug.h" />
     <ClInclude Include="SyncSocketHttp.h" />
