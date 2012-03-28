@@ -60,6 +60,7 @@ private:
 		reslen = ::WideCharToMultiByte( CP_UTF8, 0, str, -1, NULL, 0, NULL, NULL );
 		char* temp=(LPSTR)malloc(reslen);
 		::WideCharToMultiByte( CP_UTF8, 0, str, -1, temp, reslen, NULL, NULL );
+		reslen-=1;
 		return temp;
 	}
 public:

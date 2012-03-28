@@ -97,7 +97,7 @@ namespace HTTPClient
 		s=socket(addr->sa_family,SOCK_STREAM,IPPROTO_TCP);
 		if(s!=INVALID_SOCKET)
 		{
-			int tout=30*1000;
+			int tout=120*1000;
 			int res=setsockopt(s,SOL_SOCKET,SO_RCVTIMEO,(const char*)&tout,sizeof(tout));
 			res=setsockopt(s,SOL_SOCKET,SO_SNDTIMEO,(const char*)&tout,sizeof(tout));
 			return connect(s,addr,addrlen);
