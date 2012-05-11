@@ -104,6 +104,15 @@ namespace HTTPClient
 		}
 		else return SOCKET_ERROR;
 	}
+	void SocketEx::setTimeOut(int second)
+	{
+		if(s!=INVALID_SOCKET)
+		{
+			int tout=second*1000;
+			int res=setsockopt(s,SOL_SOCKET,SO_RCVTIMEO,(const char*)&tout,sizeof(tout));
+			res=setsockopt(s,SOL_SOCKET,SO_SNDTIMEO,(const char*)&tout,sizeof(tout));
+		}
+	}
 	void SocketEx::Close()
 	{
 		if(s!=INVALID_SOCKET)

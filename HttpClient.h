@@ -34,6 +34,7 @@ namespace HTTPClient
 	public:
 		SocketEx();
 		int Connect(const sockaddr* addr,int addrlen);
+		void setTimeOut(int second);
 		void Close();
 		~SocketEx();
 		int Send(const char* buf,int bufsize);
