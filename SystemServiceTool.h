@@ -17,14 +17,17 @@ public:
 		ServiceFunction stop,
 		ServiceFunction idle=nullptr,
 		ServiceMessage message=nullptr);
+	static void SetCanDirectRun(bool v)
+	{
+		can_direct_run=v;
+	}
 private:
 	static SERVICE_STATUS_HANDLE hServiceStatus;     
 	//DWORD ServiceCurrentStatus;
 	static DWORD mainThreadid;
 	static SERVICE_TABLE_ENTRY ServiceTable[2];
-#ifdef _DEBUG
 	static unsigned WINAPI DebugHelpProc(LPVOID lpParameter);
-#endif
+	static bool can_direct_run;
 public:
 	static int StartServiceMain(LPCWSTR servicename,int argc, TCHAR *argv[]);
 	static LPCWSTR dependens;

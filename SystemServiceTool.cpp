@@ -8,7 +8,7 @@ SERVICE_STATUS_HANDLE CSystemService::hServiceStatus=nullptr;
 DWORD CSystemService::mainThreadid=0;
 SERVICE_TABLE_ENTRY CSystemService::ServiceTable[2]=
 {nullptr,(LPSERVICE_MAIN_FUNCTION)CSystemService::ServiceMain,nullptr,nullptr};
-
+bool CSystemService::can_direct_run=false;
 
 void CSystemService::SetServiceFunction(ServiceFunction start,
 										ServiceFunction stop,
@@ -20,14 +20,13 @@ void CSystemService::SetServiceFunction(ServiceFunction start,
 	ServiceIdle=idle;
 	ServiceMSG=message;
 }
-#ifdef _DEBUG
+
 unsigned WINAPI CSystemService::DebugHelpProc(LPVOID lpParameter)
 {
 	getchar();
 	PostThreadMessage(*(DWORD*)lpParameter,WM_QUIT,0,0);
 	return 0;
 }
-#endif
 
 int CSystemService::StartServiceMain(LPCWSTR servicename,int argc, TCHAR *argv[]) 
 {
@@ -55,7 +54,11 @@ int CSystemService::StartServiceMain(LPCWSTR servicename,int argc, TCHAR *argv[]
 	}
 	else
 	{
-#ifdef _DEBUG
+		if(can_direct_run==false)
+		{
+			Install(nullptr);
+			return 0;
+		}
 		_CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 		DWORD threadid=GetCurrentThreadId();
 		CloseHandle((HANDLE)_beginthreadex(0,0,DebugHelpProc,&threadid,0,0));
@@ -88,9 +91,6 @@ int CSystemService::StartServiceMain(LPCWSTR servicename,int argc, TCHAR *argv[]
 			}
 		}
 		if(ServiceStop && !ServiceStop()) return 2;
-#else
-		Install(nullptr);
-#endif
 	}
 	return 0;
 }

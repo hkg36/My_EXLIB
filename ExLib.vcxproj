@@ -125,6 +125,7 @@
     </Lib>
     <PostBuildEvent>
       <Command>copy *.h C:\Include\*.h
+copy *.hpp C:\Include\*.hpp
 copy "$(OutDir)$(TargetFileName)" C:\Include\bin\ExLibd.lib</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -244,9 +245,11 @@ copy "$(OutDir)$(TargetFileName)" C:\Include\bin\ExLibd.lib</Command>
     <ClCompile Include="JsonValue.cpp" />
     <ClCompile Include="LZW.cpp" />
     <ClCompile Include="MapedFile.cpp" />
+    <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="Random32.cpp" />
     <ClCompile Include="RIJNDAEL.cpp" />
     <ClCompile Include="SocketFrm.cpp" />
+    <ClCompile Include="sqlite3.c" />
     <ClCompile Include="SyncSocketHttp.cpp" />
     <ClCompile Include="SystemServiceTool.cpp" />
     <ClCompile Include="UnZipStreams.cpp" />
@@ -264,6 +267,10 @@ copy "$(OutDir)$(TargetFileName)" C:\Include\bin\ExLibd.lib</Command>
     <ClInclude Include="DIBBitmap.h" />
     <ClInclude Include="Expression.h" />
     <ClInclude Include="GdiplusDebug.h" />
+    <ClInclude Include="pugiconfig.hpp" />
+    <ClInclude Include="pugixml.hpp" />
+    <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="sqlite3ext.h" />
     <ClInclude Include="SyncSocketHttp.h" />
     <ClInclude Include="DataQueue.h" />
     <ClInclude Include="dbcpp.h" />
