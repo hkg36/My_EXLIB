@@ -217,6 +217,7 @@ copy "$(OutDir)$(TargetFileName)" C:\Include\bin\ExLibd.lib</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="arg_parser.cc" />
     <ClCompile Include="Base64.cpp" />
     <ClCompile Include="BigInt.cpp" />
     <ClCompile Include="BigInt_PrimeBaseTest.cpp" />
@@ -256,6 +257,7 @@ copy "$(OutDir)$(TargetFileName)" C:\Include\bin\ExLibd.lib</Command>
     <ClCompile Include="WTLEXT.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="arg_parser.h" />
     <ClInclude Include="Base64.h" />
     <ClInclude Include="BigInt.h" />
     <ClInclude Include="ByteStream.h" />
