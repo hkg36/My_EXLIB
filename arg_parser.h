@@ -104,3 +104,73 @@ public:
     else return error_;
     }
   };
+/*
+int main( const int argc, const char * const argv[] )
+  {
+  bool verbose = false;
+  invocation_name = argv[0];
+
+  const Arg_parser::Option options[] =
+    {
+    { 'H', "hidden",   Arg_parser::no    },
+    { 'V', "version",  Arg_parser::no    },
+    { 'a', "append",   Arg_parser::no    },
+    { 'b', "block",    Arg_parser::yes   },
+    { 'c', "casual",   Arg_parser::maybe },
+    { 'h', "help",     Arg_parser::no    },
+    { 'o', 0,          Arg_parser::yes   },
+    { 'q', "quiet",    Arg_parser::no    },
+    { 'u', "uncaught", Arg_parser::no    },
+    { 'v', "verbose",  Arg_parser::no    },
+    { 256, "orphan",   Arg_parser::no    },
+    {   0, 0,          Arg_parser::no    } };
+
+  const Arg_parser parser( argc, argv, options );
+  if( parser.error().size() )				// bad option
+    { show_error( parser.error().c_str(), 0, true ); return 1; }
+
+  for( int argind = 0; argind < parser.arguments(); ++argind )
+    {
+    const int code = parser.code( argind );
+    if( !code ) break;				// no more options
+    switch( code )
+      {
+      case 'H': break;				// example, do nothing
+      case 'V': show_version(); return 0;
+      case 'a': break;				// example, do nothing
+      case 'b': break;				// example, do nothing
+      case 'c': break;				// example, do nothing
+      case 'h': show_help( verbose ); return 0;
+      case 'o': break;				// example, do nothing
+      case 'q': verbose = false; break;
+      // case 'u': break;			// intentionally not caught
+      case 'v': verbose = true; break;
+      case 256: break;				// example, do nothing
+      default : internal_error( "uncaught option" );
+      }
+    } // end process options
+
+  for( int argind = 0; argind < parser.arguments(); ++argind )
+    {
+    const int code = parser.code( argind );
+    const char * arg = parser.argument( argind ).c_str();
+    if( code )	// option
+      {
+      const char * name = optname( code, options );
+      if( !name[1] )
+        std::printf( "option '-%c'", name[0] );
+      else
+        std::printf( "option '--%s'", name );
+      if( arg[0] )
+        std::printf( " with argument '%s'", arg );
+      }
+    else	// non-option
+      std::printf( "non-option argument '%s'", arg );
+    std::printf( "\n" );
+    }
+
+  if( !parser.arguments() ) std::printf( "Hello, world!\n" );
+
+  return 0;
+  }
+*/
